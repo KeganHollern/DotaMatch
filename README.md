@@ -2,8 +2,7 @@
 ---
 [![forthebadge](http://forthebadge.com/images/badges/made-with-c-sharp.svg)](http://forthebadge.com)
 #####  DotaMatch is a .NET library that makes creating and managing dota 2 private lobbies easy. It works with [SteamKit](http://github.com/SteamRE/SteamKit) and Paralin's [Dota2](https://github.com/paralin/Dota2/) Library. 
-#
-#
+
 ## Binaries
 ---
 [![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
@@ -17,7 +16,6 @@ PM> Install-Package DotaMatch -Version 1.0.0
 ```
 > dotnet add package DotaMatch --version 1.0.0
 ```
-#
 
 ## Documentation
 ---
@@ -69,7 +67,7 @@ private void Client_OnGameFinished(DotaGameResult Outcome) {
 ```csharp
 client.Reset();
 ```
-#
+
 ## License
 ---
 [![forthebadge](http://forthebadge.com/images/badges/contains-technical-debt.svg)](http://forthebadge.com)
