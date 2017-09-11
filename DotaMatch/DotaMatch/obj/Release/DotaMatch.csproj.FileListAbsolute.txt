@@ -1,0 +1,14 @@
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\DotaMatch.dll
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\DotaMatch.pdb
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\Dota2.dll
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\Newtonsoft.Json.dll
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\protobuf-net.dll
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\SteamKit2.dll
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\Dota2.xml
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\Newtonsoft.Json.xml
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\protobuf-net.pdb
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\protobuf-net.xml
+E:\Dota2League\DotaMatch\DotaMatch\bin\Release\SteamKit2.xml
+E:\Dota2League\DotaMatch\DotaMatch\obj\Release\DotaMatch.dll
+E:\Dota2League\DotaMatch\DotaMatch\obj\Release\DotaMatch.pdb
+E:\Dota2League\DotaMatch\DotaMatch\obj\Release\DotaMatch.csprojResolveAssemblyReference.cache

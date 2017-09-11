@@ -1,0 +1,1317 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dota2</name>
+    </assembly>
+    <members>
+        <member name="T:Dota2.Backports.KeyValue">
+            <summary>
+            Represents a recursive string key to arbitrary value container.
+            </summary>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dota2.Backports.KeyValue"/> class.
+            </summary>
+            <param name="name">The optional name of the root key.</param>
+            <param name="value">The optional value assigned to the root key.</param>
+        </member>
+        <member name="F:Dota2.Backports.KeyValue.Invalid">
+            <summary>
+            Represents an invalid <see cref="T:Dota2.Backports.KeyValue"/> given when a searched for child does not exist.
+            </summary>
+        </member>
+        <member name="P:Dota2.Backports.KeyValue.Name">
+            <summary>
+            Gets or sets the name of this instance.
+            </summary>
+        </member>
+        <member name="P:Dota2.Backports.KeyValue.Value">
+            <summary>
+            Gets or sets the value of this instance.
+            </summary>
+        </member>
+        <member name="P:Dota2.Backports.KeyValue.Children">
+            <summary>
+            Gets the children of this instance.
+            </summary>
+        </member>
+        <member name="P:Dota2.Backports.KeyValue.Item(System.String)">
+            <summary>
+            Gets or sets the child <see cref="T:Dota2.Backports.KeyValue" /> with the specified key.
+            When retrieving by key, if no child with the given key exists, <see cref="F:Dota2.Backports.KeyValue.Invalid" /> is returned.
+            </summary>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.AsString">
+            <summary>
+            Returns the value of this instance as a string.
+            </summary>
+            <returns>The value of this instance as a string.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.AsInteger(System.Int32)">
+            <summary>
+            Attempts to convert and return the value of this instance as an integer.
+            If the conversion is invalid, the default value is returned.
+            </summary>
+            <param name="defaultValue">The default value to return if the conversion is invalid.</param>
+            <returns>The value of this instance as an integer.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.AsLong(System.Int64)">
+            <summary>
+            Attempts to convert and return the value of this instance as a long.
+            If the conversion is invalid, the default value is returned.
+            </summary>
+            <param name="defaultValue">The default value to return if the conversion is invalid.</param>
+            <returns>The value of this instance as a long.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.AsUnsignedLong(System.UInt64)">
+            <summary>
+            Attempts to convert and return the value of this instance as an unsigned long.
+            If the conversion is invalid, the default value is returned.
+            </summary>
+            <param name="defaultValue">The default value to return if the conversion is invalid.</param>
+            <returns>The value of this instance as an unsigned long.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.AsFloat(System.Single)">
+            <summary>
+            Attempts to convert and return the value of this instance as a float.
+            If the conversion is invalid, the default value is returned.
+            </summary>
+            <param name="defaultValue">The default value to return if the conversion is invalid.</param>
+            <returns>The value of this instance as a float.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.AsBoolean(System.Boolean)">
+            <summary>
+            Attempts to convert and return the value of this instance as a boolean.
+            If the conversion is invalid, the default value is returned.
+            </summary>
+            <param name="defaultValue">The default value to return if the conversion is invalid.</param>
+            <returns>The value of this instance as a boolean.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.AsEnum``1(``0)">
+            <summary>
+            Attempts to convert and return the value of this instance as an enum.
+            If the conversion is invalid, the default value is returned.
+            </summary>
+            <param name="defaultValue">The default value to return if the conversion is invalid.</param>
+            <returns>The value of this instance as an enum.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.LoadAsText(System.String)">
+            <summary>
+            Attempts to load the given filename as a text <see cref="T:Dota2.Backports.KeyValue"/>.
+            </summary>
+            <param name="path">The path to the file to load.</param>
+            <returns>a <see cref="T:Dota2.Backports.KeyValue"/> instance if the load was successful, or <c>null</c> on failure.</returns>
+            <remarks>
+            This method will swallow any exceptions that occur when reading, use <see cref="M:Dota2.Backports.KeyValue.ReadAsText(System.IO.Stream)"/> if you wish to handle exceptions.
+            </remarks>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.LoadAsBinary(System.String)">
+            <summary>
+            Attempts to load the given filename as a binary <see cref="T:Dota2.Backports.KeyValue"/>.
+            </summary>
+            <param name="path">The path to the file to load.</param>
+            <returns>a <see cref="T:Dota2.Backports.KeyValue"/> instance if the load was successful, or <c>null</c> on failure.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.TryLoadAsBinary(System.String,Dota2.Backports.KeyValue@)">
+            <summary>
+            Attempts to load the given filename as a binary <see cref="T:Dota2.Backports.KeyValue"/>.
+            </summary>
+            <param name="path">The path to the file to load.</param>
+            <param name="keyValue">The resulting <see cref="T:Dota2.Backports.KeyValue"/> object if the load was successful, or <c>null</c> if unsuccessful.</param>
+            <returns><c>true</c> if the load was successful, or <c>false</c> on failure.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.LoadFromString(System.String)">
+            <summary>
+            Attempts to create an instance of <see cref="T:Dota2.Backports.KeyValue"/> from the given input text.
+            </summary>
+            <param name="input">The input text to load.</param>
+            <returns>a <see cref="T:Dota2.Backports.KeyValue"/> instance if the load was successful, or <c>null</c> on failure.</returns>
+            <remarks>
+            This method will swallow any exceptions that occur when reading, use <see cref="M:Dota2.Backports.KeyValue.ReadAsText(System.IO.Stream)"/> if you wish to handle exceptions.
+            </remarks>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.ReadAsText(System.IO.Stream)">
+            <summary>
+            Populate this instance from the given <see cref="T:System.IO.Stream"/> as a text <see cref="T:Dota2.Backports.KeyValue"/>.
+            </summary>
+            <param name="input">The input <see cref="T:System.IO.Stream"/> to read from.</param>
+            <returns><c>true</c> if the read was successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.ReadFileAsText(System.String)">
+            <summary>
+            Opens and reads the given filename as text.
+            </summary>
+            <seealso cref="M:Dota2.Backports.KeyValue.ReadAsText(System.IO.Stream)"/>
+            <param name="filename">The file to open and read.</param>
+            <returns><c>true</c> if the read was successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.SaveToFile(System.String,System.Boolean)">
+            <summary>
+            Saves this instance to file.
+            </summary>
+            <param name="path">The file path to save to.</param>
+            <param name="asBinary">If set to <c>true</c>, saves this instance as binary.</param>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.SaveToStream(System.IO.Stream,System.Boolean)">
+            <summary>
+            Saves this instance to a given <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> to save to.</param>
+            <param name="asBinary">If set to <c>true</c>, saves this instance as binary.</param>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.ReadAsBinary(System.IO.Stream)">
+            <summary>
+            Populate this instance from the given <see cref="T:System.IO.Stream"/> as a binary <see cref="T:Dota2.Backports.KeyValue"/>.
+            </summary>
+            <param name="input">The input <see cref="T:System.IO.Stream"/> to read from.</param>
+            <returns><c>true</c> if the read was successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Dota2.Backports.KeyValue.TryReadAsBinary(System.IO.Stream)">
+            <summary>
+            Populate this instance from the given <see cref="T:System.IO.Stream"/> as a binary <see cref="T:Dota2.Backports.KeyValue"/>.
+            </summary>
+            <param name="input">The input <see cref="T:System.IO.Stream"/> to read from.</param>
+            <returns><c>true</c> if the read was successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Dota2.Base.Data.CSOTypes">
+            <summary>
+            Cache types
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.ECON_ITEM">
+            <summary>
+            An economy item.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.ITEM_RECIPE">
+            <summary>
+            An econ item recipe.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.ECON_GAME_ACCOUNT_CLIENT">
+            <summary>
+            Game account client for Econ.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.SELECTED_ITEM_PRESET">
+            <summary>
+            Selected item preset.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.ITEM_PRESET_INSTANCE">
+            <summary>
+            Item preset instance.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.DROP_RATE_BONUS">
+            <summary>
+            Active drop rate bonus.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.LEAGUE_VIEW_PASS">
+            <summary>
+            Pass to view a league.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.EVENT_TICKET">
+            <summary>
+            Event ticket.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.ITEM_TOURNAMENT_PASSPORT">
+            <summary>
+            Item tournament passport.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.GAME_ACCOUNT_CLIENT">
+            <summary>
+            DOTA 2 game account client.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.PARTY">
+            <summary>
+            A Dota 2 party.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.LOBBY">
+            <summary>
+            A Dota 2 lobby.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.PARTYINVITE">
+            <summary>
+            A party invite.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.GAME_HERO_FAVORITES">
+            <summary>
+            Game hero favorites.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.MAP_LOCATION_STATE">
+            <summary>
+            Ping map location state.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.TOURNAMENT">
+            <summary>
+            Tournament.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.PLAYER_CHALLENGE">
+            <summary>
+            A player challenge.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.CSOTypes.LOBBYINVITE">
+            <summary>
+            A lobby invite, introduced in Reborn.
+            </summary>
+        </member>
+        <member name="T:Dota2.Base.Data.Games">
+            <summary>
+            Potential game IDs usable by DOTA GC handler.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.Games.DOTA2">
+            <summary>
+            Main DOTA 2 client.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.Games.DOTA2TEST">
+            <summary>
+            DOTA 2 test.
+            </summary>
+        </member>
+        <member name="T:Dota2.Base.Data.LobbyExtraData">
+            <summary>
+            Parsed extra data about a lobby.
+            </summary>
+        </member>
+        <member name="P:Dota2.Base.Data.LobbyExtraData.LeagueAdminList">
+            <summary>
+            List of league admins in this lobby.
+            </summary>
+        </member>
+        <member name="T:Dota2.Base.Data.Dota2SOTypes">
+            <summary>
+            Helper to associate cache types with classes.
+            </summary>
+        </member>
+        <member name="F:Dota2.Base.Data.Dota2SOTypes.SOTypes">
+            <summary>
+            Cache type associations.
+            </summary>
+        </member>
+        <member name="T:Dota2.Datagram.Config.Model.NetworkConfig">
+            <summary>
+            Steam Datagram network config
+            </summary>
+        </member>
+        <member name="P:Dota2.Datagram.Config.Model.NetworkConfig.revision">
+            <summary>
+            Revision of the config
+            </summary>
+        </member>
+        <member name="P:Dota2.Datagram.Config.Model.NetworkConfig.data_centers">
+            <summary>
+            Datacenter definitions
+            </summary>
+        </member>
+        <member name="P:Dota2.Datagram.Config.Model.NetworkConfig.routing_clusters">
+            <summary>
+            Routing cluster definitions
+            </summary>
+        </member>
+        <member name="T:Dota2.Datagram.Config.Model.NetworkDatacenter">
+            <summary>
+            Steam Datagram datacenter definition
+            </summary>
+        </member>
+        <member name="P:Dota2.Datagram.Config.Model.NetworkDatacenter.lat">
+            <summary>
+            Latitude of the datacenter
+            </summary>
+        </member>
+        <member name="P:Dota2.Datagram.Config.Model.NetworkDatacenter.lon">
+            <summary>
+            Longitude of the datacenter
+            </summary>
+        </member>
+        <member name="P:Dota2.Datagram.Config.Model.NetworkDatacenter.address_ranges">
+            <summary>
+            IP address ranges of the datacenter
+            </summary>
+        </member>
+        <member name="T:Dota2.Datagram.Config.Model.NetworkRoutingCluster">
+            <summary>
+            Routing cluster definition
+            </summary>
+        </member>
+        <member name="P:Dota2.Datagram.Config.Model.NetworkRoutingCluster.addresses">
+            <summary>
+            Address range of the cluster
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler">
+            <summary>
+                This handler handles all Dota 2 GC lobbies interaction.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.CacheUnsubscribed">
+            <summary>
+                An unhandled cache unsubscribe
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.CacheUnsubscribed.result">
+            <summary>
+            Result.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.ChatMessage">
+            <summary>
+                Chat message received from a channel
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.ChatMessage.result">
+            <summary>
+            The chat message payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.ConnectionStatus">
+            <summary>
+                Connection status
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.ConnectionStatus.result">
+            <summary>
+            The connection status payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.GCWelcomeCallback">
+            <summary>
+            Called when the GC welcomes the client.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.GCWelcomeCallback.Version">
+            <summary>
+            The current DOTA 2 version.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.InvitationCreated">
+            <summary>
+                Handle invitation created
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.InvitationCreated.invitation">
+            <summary>
+            Invitation payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.JoinChatChannelResponse">
+            <summary>
+                Reponse when trying to join a chat chanel
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.JoinChatChannelResponse.result">
+            <summary>
+            The join chat channel response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.ChatChannelListResponse">
+            <summary>
+                Reponse when trying to list chat channels
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.ChatChannelListResponse.result">
+            <summary>
+            The channel list payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.LiveLeagueGameUpdate">
+            <summary>
+            League live game update.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.LiveLeagueGameUpdate.result">
+            <summary>
+            Live game update payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.MatchResultResponse">
+            <summary>
+                Match result response.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.MatchResultResponse.result">
+            <summary>
+            Match details response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.AuthListAck">
+            <summary>
+            Auth list ack.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.AuthListAck.authAck">
+            <summary>
+            Authorization list ack payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.BeginSessionResponse">
+            <summary>
+            Begin session response.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.BeginSessionResponse.response">
+            <summary>
+            Begin session response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.ProTeamListResponse">
+            <summary>
+                Pro team list response
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.ProTeamListResponse.result">
+            <summary>
+            Pro team list payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.OtherJoinedChannel">
+            <summary>
+                A user joined our chat channel
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.OtherJoinedChannel.result">
+            <summary>
+            Someone else joined chat channel payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.OtherLeftChannel">
+            <summary>
+                A user left out chat chanel
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.OtherLeftChannel.result">
+            <summary>
+            Someone else left chat channel payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PartyInviteLeave">
+            <summary>
+                When the party invite is cleared this is sent out.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PartyInviteLeave.result">
+            <summary>
+            Cache unsubscribed payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.LobbyInviteLeave">
+            <summary>
+                When the lobby invite is cleared this is sent ou
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.LobbyInviteLeave.result">
+            <summary>
+            Cache unsubscribed payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PartyInviteSnapshot">
+            <summary>
+                Party invite was updated/snapshotted
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PartyInviteSnapshot.invite">
+            <summary>
+            The current invite.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PartyInviteSnapshot.oldInvite">
+            <summary>
+            The old invite, possibly null.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.LobbyInviteSnapshot">
+            <summary>
+                Lobby invite was updated/snapshotted
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.LobbyInviteSnapshot.invite">
+            <summary>
+            The current lobby invite.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.LobbyInviteSnapshot.oldInvite">
+            <summary>
+            The old lobby invite, possibly null.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PartyLeave">
+            <summary>
+                When leaving a party this is sent out
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PartyLeave.result">
+            <summary>
+            Cache unsubscribed payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PartySnapshot">
+            <summary>
+                Party was updated/snapshotted.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PartySnapshot.party">
+            <summary>
+            The current party.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PartySnapshot.oldParty">
+            <summary>
+            The old party, possibly null.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PingRequest">
+            <summary>
+                Ping request from GC
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PingRequest.request">
+            <summary>
+            Ping response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.Popup">
+            <summary>
+                We receive a popup. (e.g. Kicked from lobby)
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.Popup.result">
+            <summary>
+            Popup message payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PracticeLobbyJoinResponse">
+            <summary>
+            When we receive a practice lobby join response.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PracticeLobbyJoinResponse.result">
+            <summary>
+            Practice join response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PracticeLobbyLeave">
+            <summary>
+                When leaving a practice lobby this is sent out
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PracticeLobbyLeave.result">
+            <summary>
+            Cache unsubscribed payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PracticeLobbyListResponse">
+            <summary>
+            Response to a request for practice lobby list.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PracticeLobbyListResponse.result">
+            <summary>
+            Lobby list response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PracticeLobbySnapshot">
+            <summary>
+                Lobby was updated
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PracticeLobbySnapshot.lobby">
+            <summary>
+            The current lobby.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PracticeLobbySnapshot.oldLobby">
+            <summary>
+            The old lobby, possibly null.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.LeagueViewPassesSnapshot">
+            <summary>
+                League view passes list was populated.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.LeagueViewPassesSnapshot.passes">
+            <summary>
+            All passes received.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.GameAccountClientSnapshot">
+            <summary>
+                Game account client was updated / received.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.GameAccountClientSnapshot.client">
+            <summary>
+            The game account client.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.SteamPartyInvite">
+            <summary>
+                When receiving a steam component of the party invite
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.SteamPartyInvite.result">
+            <summary>
+            The invitation payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.UnhandledDotaGCCallback">
+            <summary>
+            Called when a DOTA callback is not handled.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.UnhandledDotaGCCallback.Message">
+            <summary>
+            The unhandled message.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.PlayerInfo">
+            <summary>
+            The GC has supplied us with some player information
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.PlayerInfo.player_infos">
+            <summary>
+            Player info payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.FantasyLeagueInfo">
+            <summary>
+            The GC has supplied us with some player information
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.FantasyLeagueInfo.info">
+            <summary>
+            The fantasy league info payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.ProfileResponse">
+            <summary>
+                Profile response to a RequestProfile call
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.ProfileResponse.result">
+            <summary>
+            The profile response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.GuildSetRoleResponse">
+            <summary>
+                Response to setting someones guild role
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.GuildSetRoleResponse.result">
+            <summary>
+            The account set role payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.GuildInviteResponse">
+            <summary>
+                Response to inviting someone to a guild
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.GuildInviteResponse.result">
+            <summary>
+            The invite account response payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.GuildCancelInviteResponse">
+            <summary>
+                Response to cancelling a guild invite
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.GuildCancelInviteResponse.result">
+            <summary>
+            The result payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.GuildDataResponse">
+            <summary>
+                Response to a RequestGuildData call
+                Called once per guild after a RequestGuildData call was made
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.GuildDataResponse.result">
+            <summary>
+            The result payload.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.KickedFromParty">
+            <summary>
+                Called when we've just been kicked from a party.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.KickedFromParty.popup">
+            <summary>
+            The in-game popup notification.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.KickedFromLobby">
+            <summary>
+                Called when we've just been kicked from a lobby.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.KickedFromLobby.popup">
+            <summary>
+            The in-game popup notification.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.KickedFromTeam">
+            <summary>
+                Called when we've just been kicked from a team.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.KickedFromTeam.popup">
+            <summary>
+            The in-game popup notification.
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.ProfileCardResponse">
+            <summary>
+                Response to a RequestProfileCards call
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.ProfileCardResponse.result">
+            <summary>
+            The profile card response
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.RichPresenceUpdate">
+            <summary>
+                Called upon a rich presence update
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.RichPresenceUpdate.result">
+            <summary>
+            The rich presence info 
+            </summary>
+        </member>
+        <member name="T:Dota2.GC.DotaGCHandler.RPType">
+            <summary>
+                Rich presence type.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.RPType.Init">
+            <summary>
+                Initial state.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.RPType.Play">
+            <summary>
+                Currently playing a game.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.RPType.Queue">
+            <summary>
+                Queuing for a match.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.RPType.None">
+            <summary>
+                No state? Menu probably.
+            </summary>
+        </member>
+        <member name="F:Dota2.GC.DotaGCHandler.RPType.Auto">
+            <summary>
+                Automatically decide state.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.#ctor(SteamKit2.SteamClient,Dota2.Base.Data.Games,Dota2.GC.Internal.ESourceEngine)">
+            <summary>
+                Internally create an instance of the GC handler.
+            </summary>
+            <param name="client"></param>
+            <param name="appId"></param>
+            <param name="_engine"></param>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.GameId">
+            <summary>
+                The Game ID the handler will use. Defaults to Main Client.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.Engine">
+            <summary>
+                The engine to use.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.Ready">
+            <summary>
+                Is the GC ready?
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.Lobby">
+            <summary>
+                The current up to date lobby
+            </summary>
+            <value>The lobby.</value>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.Party">
+            <summary>
+                The current up to date party.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.PartyInvite">
+            <summary>
+                The active invite to the party.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.LobbyInvite">
+            <summary>
+                The active incoming invite to the lobby.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.Invitation">
+            <summary>
+                Last invitation to the game.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.SteamClient">
+            <summary>
+                The underlying SteamClient.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.EconItems">
+            <summary>
+                Econ items.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.LeagueViewPasses">
+            <summary>
+                League view passes.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.MapLocationStates">
+            <summary>
+                Ping map view states.
+            </summary>
+        </member>
+        <member name="P:Dota2.GC.DotaGCHandler.GameAccountClient">
+            <summary>
+                Contains various information about our player.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.Bootstrap(SteamKit2.SteamClient,Dota2.Base.Data.Games,Dota2.GC.Internal.ESourceEngine)">
+            <summary>
+                Setup the DOTA 2 GC handler on an existing client.
+            </summary>
+            <param name="client"></param>
+            <param name="appId">Optional, specify the GC to communicate with.</param>
+            <param name="engine">Optional, _engine to connect to. Default source2.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.Send(SteamKit2.GC.IClientGCMsg)">
+            <summary>
+                Sends a game coordinator message.
+            </summary>
+            <param name="msg">The GC message to send.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.LaunchDota">
+            <summary>
+                Old method of starting the DOTA client.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.Start">
+            <summary>
+                Start playing DOTA 2 and automatically request a GC session.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.UploadRichPresence(Dota2.GC.DotaGCHandler.RPType)">
+            <summary>
+                Uploads rich presence for a variety of situations.
+                <param name="inp">Type of RP event to upload.</param>
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.SayHello">
+            <summary>
+                Send the hello message requesting a GC session. Do not call this manually!
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.Stop">
+            <summary>
+                Stop playing DOTA 2.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.AbandonGame">
+            <summary>
+                Abandon the current game
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.StopQueue">
+            <summary>
+                Cancel the queue for a match
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RespondPartyInvite(System.UInt64,System.Boolean)">
+            <summary>
+                Respond to a party invite
+            </summary>
+            <param name="party_id"></param>
+            <param name="accept"></param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RespondLobbyInvite(System.UInt64,System.Boolean,System.UInt64,System.UInt32)">
+            <summary>
+                Respond to a lobby invite
+            </summary>
+            <param name="lobbyId">Lobby ID</param>
+            <param name="accept">accept lobby invite, true/false</param>
+            <param name="customGameCrc">If responding to a custom game invite, the crc of te game</param>
+            <param name="customGameTimestamp">If responding to a custom game invite, the timestamp of the download.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.JoinLobby(System.UInt64,System.String)">
+            <summary>
+                Join a lobby given a lobby ID
+            </summary>
+            <param name="lobbyId"></param>
+            <param name="passKey"></param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.LeaveLobby">
+            <summary>
+                Attempt to leave a lobby
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.LeaveParty">
+            <summary>
+                Attempt to leave a party.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.Pong">
+            <summary>
+                Respond to a ping()
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.JoinBroadcastChannel(System.UInt32)">
+            <summary>
+                Joins a broadcast channel in the lobby
+            </summary>
+            <param name="channel">The channel slot to join. Valid channel values range from 0 to 5.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.JoinCoachSlot(Dota2.GC.Dota.Internal.DOTA_GC_TEAM)">
+            <summary>
+                Join a team
+            </summary>
+            <param name="team">The team to join.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestSubscriptionRefresh(System.UInt32,System.UInt64)">
+            <summary>
+                Requests a subscription refresh for a specific cache ID.
+            </summary>
+            <param name="type">the type of the cache</param>
+            <param name="id">the cache soid</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestPlayerInfo(System.Collections.Generic.IEnumerable{System.UInt32})">
+            <summary>
+                Send a request for player information.
+            </summary>
+            <param name="ids">DOTA 2 profile ids.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestProTeamList">
+            <summary>
+                Requests the entire pro team list.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.JoinTeam(Dota2.GC.Dota.Internal.DOTA_GC_TEAM,System.UInt32,Dota2.GC.Dota.Internal.DOTABotDifficulty)">
+            <summary>
+                Switches team in a GC Lobby.
+            </summary>
+            <param name="team">target team</param>
+            <param name="slot">slot on the team</param>
+            <param name="botDifficulty">set bot difficulty for slot</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.SetBotSlotDifficulty(Dota2.GC.Dota.Internal.DOTA_GC_TEAM,System.UInt32,Dota2.GC.Dota.Internal.DOTABotDifficulty)">
+            <summary>
+            Adds or removes a bot from a slot. Alias for JoinTeam with difficulty param.
+            </summary>
+            <param name="team">team</param>
+            <param name="slot">slot</param>
+            <param name="botDifficulty">difficulty</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.LaunchLobby">
+            <summary>
+                Start the game
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.CreateLobby(System.String,Dota2.GC.Dota.Internal.CMsgPracticeLobbySetDetails)">
+            <summary>
+                Create a practice or tournament or custom lobby.
+            </summary>
+            <param name="passKey">Password for the lobby.</param>
+            <param name="details">Lobby options.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.SetLobbyDetails(Dota2.GC.Dota.Internal.CMsgPracticeLobbySetDetails)">
+            <summary>
+            Change the details of an existing lobby.
+            </summary>
+            <param name="details">Lobby details overrides.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.InviteToParty(System.UInt64)">
+            <summary>
+                Invite someone to the party.
+            </summary>
+            <param name="steam_id">Steam ID</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.InviteToLobby(System.UInt64)">
+            <summary>
+                Invite someone to the existing lobby.
+                <remarks>You need an existing lobby for this to work.</remarks>
+            </summary>
+            <param name="steam_id">steam ID to invite</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.ApplyTeamToLobby(System.UInt32)">
+            <summary>
+                Sets the team details on the team the bot is sitting on.
+            </summary>
+            <param name="teamid"></param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.SetPartyCoach(System.Boolean)">
+            <summary>
+                Set coach slot in party
+            </summary>
+            <param name="coach"></param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.KickPlayerFromParty(System.UInt64)">
+            <summary>
+                Kick a player from the party
+            </summary>
+            <param name="steamId">Steam ID of player to kick</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.KickPlayerFromLobby(System.UInt32)">
+            <summary>
+                Kick a player from the lobby
+            </summary>
+            <param name="accountId">Account ID of player to kick</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.KickPlayerFromLobbyTeam(System.UInt32)">
+            <summary>
+                Kick a player from the lobby team they're in.
+            </summary>
+            <param name="accountId">Account ID of player to kick</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.JoinChatChannel(System.String,Dota2.GC.Dota.Internal.DOTAChatChannelType_t)">
+            <summary>
+                Joins a chat channel. Note that limited Steam accounts cannot join chat channels.
+            </summary>
+            <param name="name">Name of the chat channel</param>
+            <param name="type">Type of the chat channel</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestChatChannelList">
+            <summary>
+                Request a list of public chat channels from the GC.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestMatchResult(System.UInt64)">
+            <summary>
+                Request a match result
+            </summary>
+            <param name="matchId">Match id</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.SendChannelMessage(System.UInt64,System.String)">
+            <summary>
+                Sends a message in a chat channel.
+            </summary>
+            <param name="channelid">Id of channel to join.</param>
+            <param name="message">Message to send.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.LeaveChatChannel(System.UInt64)">
+            <summary>
+                Leaves chat channel
+            </summary>
+            <param name="channelid">id of channel to leave</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.PracticeLobbyList(System.String,System.Boolean)">
+            <summary>
+                Requests a lobby list with an optional password
+            </summary>
+            <param name="passKey">Pass key.</param>
+            <param name="tournament"> Tournament games? </param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.PracticeLobbyShuffle">
+            <summary>
+                Shuffle the current lobby
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.PracticeLobbyFlip">
+            <summary>
+                Flip the teams in the current lobby
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestPlayerProfile(SteamKit2.SteamID)">
+            <summary>
+                Request a player's Dota 2 game profile
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.SetAccountGuildRole(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+                Set someones role in a guild.
+                Roles are: 0 (Kick), 1 (Guild Leader), 2 (Guild Officer), 3 (Regular Member)
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.InviteToGuild(System.UInt32,System.UInt32)">
+            <summary>
+                Invites accountId to a guild.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.CancelGuildInvite(System.UInt32,System.UInt32)">
+            <summary>
+                Cancels a pending guild invite
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestGuildData">
+            <summary>
+                Requests information about all current guilds the client is in
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.RequestProfileCards(System.UInt32)">
+            <summary>
+                Requests someone's profile cards
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.GetPacketGCMsg(System.UInt32,System.Byte[])">
+            <summary>
+                Packet GC message.
+            </summary>
+            <param name="eMsg"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.HandleMsg(SteamKit2.IPacketMsg)">
+            <summary>
+                Handles a client message. This should not be called directly.
+            </summary>
+            <param name="packetMsg">The packet message that contains the data.</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.HandleSubscribedType(Dota2.GC.Internal.CMsgSOCacheSubscribed.SubscribedType)">
+            <summary>
+                Handle various cache subscription types.
+            </summary>
+            <param name="cache"></param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.HandleCacheDestroy(SteamKit2.GC.IPacketGCMsg)">
+            <summary>
+                Handle when a cache is destroyed.
+            </summary>
+            <param name="obj">Message</param>
+        </member>
+        <member name="M:Dota2.GC.DotaGCHandler.HandleLiveLeageGameUpdate(SteamKit2.GC.IPacketGCMsg)">
+            <summary>
+                GC tells us if there are tournaments _running.
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="T:Dota2.GC.DotaExtensions">
+            <summary>
+            General Linq extensions for Dota2.
+            </summary>
+        </member>
+        <member name="M:Dota2.GC.DotaExtensions.ParseExtraMessages(Dota2.GC.Dota.Internal.CSODOTALobby)">
+            <summary>
+            Parse the extra data on a lobby.
+            </summary>
+            <param name="lobby">Lobby containing extra messages.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dota2.GC.DotaExtensions.DeserializeProtobuf``1(System.Byte[])">
+            <summary>
+            Deserializes a serialized protobuf, convenience function.
+            </summary>
+            <param name="data">Binary data array.</param>
+            <typeparam name="T">The protobuf type to deserialize.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Dota2.CDN.DotaCDN">
+            <summary>
+            Interacts with the DOTA 2 CDN
+            </summary>
+        </member>
+        <member name="M:Dota2.CDN.DotaCDN.GetHostname(Dota2.CDN.DotaCDN.CDNType)">
+            <summary>
+            Gets the CDN Hostname for a CDN type
+            </summary>
+            <param name="type">CDN type</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dota2.CDN.DotaCDN.StaticDataPath(Dota2.CDN.DotaCDN.CDNData,Dota2.Base.Data.Games)">
+            <summary>
+            Build the URL to something static in the CDN
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Dota2.CDN.DotaCDN.DatagramNetworkConfig(Dota2.CDN.DotaCDN.CDNType,Dota2.Base.Data.Games)">
+            <summary>
+            Builds the URL to the Steam Datagram network config file.
+            </summary>
+            <param name="type"></param>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dota2.CDN.DotaCDN.GetNetworkConfig(Dota2.CDN.DotaCDN.CDNType,Dota2.Base.Data.Games)">
+            <summary>
+            Retreive the network config from the DOTA 2 CDN
+            </summary>
+            <returns>Network config on success, null otherwise.</returns>
+        </member>
+        <member name="T:Dota2.CDN.DotaCDN.CDNType">
+            <summary>
+            CDN type
+            </summary>
+        </member>
+        <member name="F:Dota2.CDN.DotaCDN.CDNType.LOCAL">
+            <summary>
+            Local CDN. Presumably developer machines.
+            </summary>
+        </member>
+        <member name="F:Dota2.CDN.DotaCDN.CDNType.STANDARD">
+            <summary>
+            Standard, public CDN
+            </summary>
+        </member>
+        <member name="F:Dota2.CDN.DotaCDN.CDNType.CHINA">
+            <summary>
+            CDN specific to China due to regulations.
+            </summary>
+        </member>
+        <member name="F:Dota2.CDN.DotaCDN.CDNType.TEST">
+            <summary>
+            TEST cdn, valve internal.
+            </summary>
+        </member>
+        <member name="T:Dota2.CDN.DotaCDN.CDNData">
+            <summary>
+            Known data on the CDN with constant paths
+            </summary>
+        </member>
+        <member name="F:Dota2.CDN.DotaCDN.CDNData.DATAGRAM_NETWORK_CONFIG">
+            <summary>
+            Steam Datagram network config
+            </summary>
+        </member>
+        <member name="M:Dota2.Utils.PropertyCopier.CopyProperties``1(``0,``0)">
+            <summary>
+            Copy property values from one object to another.
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="dest">Destination</param>
+            <param name="src">Src</param>
+        </member>
+    </members>
+</doc>
